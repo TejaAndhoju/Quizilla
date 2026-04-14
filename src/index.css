@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme {
+  --color-brand: #aa3bff;
+  --color-brand-hover: #9b2cee;
+  --color-brand-light: rgba(170, 59, 255, 0.15);
+  --color-dark-bg: #0b0c10;
+  --color-dark-surface: #151821;
+  --color-dark-surface-elevated: #1f2330;
+  --color-dark-border: #2b3040;
+  --color-dark-border-hover: #3d445a;
+  
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+}
+
+@layer base {
+
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-dark-bg text-slate-200 antialiased;
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  /* Custom Code Font Override */
+  code, pre {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Custom scrollbar for webkit */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-border rounded-full hover:bg-dark-border-hover transition-colors;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-dark-surface/80 backdrop-blur-md border border-dark-border shadow-xl;
+  }
+  .glass-panel-accent {
+    @apply bg-dark-surface/80 backdrop-blur-md border border-brand/30 shadow-xl shadow-brand/10;
+  }
+  .btn-primary {
+    @apply bg-brand hover:bg-brand-hover text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-[0_0_15px_rgba(170,59,255,0.4)] hover:shadow-[0_0_25px_rgba(170,59,255,0.6)] active:scale-95;
+  }
+  .btn-secondary {
+    @apply bg-dark-surface-elevated hover:bg-dark-border-hover border border-dark-border text-slate-100 font-medium py-3 px-6 rounded-xl transition-all active:scale-95;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand to-purple-400;
+  }
+}
